@@ -1,5 +1,6 @@
 package com.omurkrmn.patientservice.service;
 
+import com.omurkrmn.patientservice.dto.PatientRequestDTO;
 import com.omurkrmn.patientservice.dto.PatientResponseDTO;
 import com.omurkrmn.patientservice.mapper.PatientMapper;
 import com.omurkrmn.patientservice.model.Patient;
@@ -24,6 +25,12 @@ public class PatientService {
                 .map(PatientMapper::toDTO)
                 .toList();
 
+    }
+
+    public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        Patient newPatient = patientRepository.save(PatientMapper.toEntity(patientRequestDTO));
+
+        return PatientMapper.toDTO(newPatient);
     }
 
 }

@@ -1,8 +1,13 @@
 package com.omurkrmn.patientservice.controller;
 
+import com.omurkrmn.patientservice.dto.PatientRequestDTO;
+import com.omurkrmn.patientservice.dto.PatientResponseDTO;
 import com.omurkrmn.patientservice.service.PatientService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
@@ -12,5 +17,16 @@ public class PatientController {
 
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PatientResponseDTO>> getPatients() {
+        return ResponseEntity.ok(patientService.getPatients());
+    }
+
+    @PostMapping
+    public ResponseEntity<PatientResponseDTO> createPatient(@Valid @RequestBody PatientRequestDTO patientRequestDTO) {
+        PatientResponseDTO patientResponseDTO = patientService.createPatient(patientRequestDTO);
+        return ResponseEntity.ok(patientResponseDTO);
     }
 }

@@ -1,0 +1,14 @@
+### Create a new patient
+GET https://localhost:4000/patients
+Content-Type: application/json
+
+
+{
+  "name": "Lock Downey",
+  "email": "lockdowntest@example.com",
+  "address": "123 Loock St.",
+  "dateOfBirth": "1987-01-01",
+  "registeredDate": "2026-01-03"
+}
+
+###
