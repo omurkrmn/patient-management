@@ -1,5 +1,7 @@
 package com.omurkrmn.patientservice.service;
 
+import com.omurkrmn.patientservice.dto.PatientResponseDTO;
+import com.omurkrmn.patientservice.mapper.PatientMapper;
 import com.omurkrmn.patientservice.model.Patient;
 import com.omurkrmn.patientservice.repository.PatientRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,13 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public List<PatientResponseDTO> getPatients () {
+    public List<PatientResponseDTO> getPatients() {
         List<Patient> patients = patientRepository.findAll();
+
+        return patients.stream()
+                .map(PatientMapper::toDTO)
+                .toList();
+
     }
+
 }
