@@ -1,0 +1,12 @@
+### Delete an existing patient
+DELETE https://localhost:4000/patients/881b6345-c51d-23e5-b805-346611517021
+Content-Type: application/json
+
+{
+  "name": "Lara Schmidt",
+  "email": "lara.schmidt@example.com",
+  "address": "University Street 4, Oxenfurt",
+  "dateOfBirth": "1993-06-27",
+  "registeredDate": "2026-01-03"
+}
+###

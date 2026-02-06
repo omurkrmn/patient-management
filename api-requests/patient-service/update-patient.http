@@ -1,7 +1,6 @@
-### Create a new patient
-POST https://localhost:4000/patients
+### Update an existing patient
+PUT https://localhost:4000/patients/
 Content-Type: application/json
-
 
 {
   "name": "Lock Downey",
